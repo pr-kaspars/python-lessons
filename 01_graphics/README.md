@@ -95,9 +95,9 @@ rectangle.draw(win)
 
 ## Exercises
 
-1. Create a program that draws hosizontal line segment
-2. Create a program that draws simetrical plus sign
-3. Create a program that draws 5 squares using 2 `Recangle` objects
+1. Create a program that draws horizontal line segment
+2. Create a program that draws symmetrical plus sign
+3. Create a program that draws 5 squares using 2 `Rectangle` objects
 4. Create a program that draws right-angled triangle
 5. Create a program that draws a star
 6. Create a program that draws a face and colours it
