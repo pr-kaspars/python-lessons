@@ -22,7 +22,7 @@ triangles. Firs line has one triangle, second - two triangles
 third - three, etc.
 9. Create a program that fills the window with squares and
 paint them as chess board.
-10. Create a program that draws 1000 random numbers in
+10. Create a program that draws 1000 random points in
 random colours.
 11. Create a program that draws jagged line with random
 vertices.
