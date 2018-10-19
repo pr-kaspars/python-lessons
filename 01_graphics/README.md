@@ -1,108 +1,160 @@
-# Graphics
+# Pygame
 
-## Window
-
-Graphics module isn’t part of python, it must be imported.
+Pygame module has to be imported before using it.
 
 ```python
-from graphics import *
+import pygame
 ```
 
-A window is required to display graphics. Let’s create and display a small
-(200 by 200 pixels) window.
+A window is required to display graphics. Let’s create window.
 
 ```python
-win = GraphWin()
+pygame.init()
+screen = pygame.display.set_mode([600, 600])
 ```
 
-Computer screens usually are much bigger. To use that advantage in our favour,
-size of the window can be changed.
+The lines above will create a 600 by 600 pixels big window. You probably noticed that the window appeared only for a split second on the screen. It happens because our program does not have any instructions after and therefore quits. That can be easily fixed by making window close only when quit button is pressed.
 
 ```python
-win = GraphWin("Hello World", 500, 300)
-```
-
-The line above will create a window 500 pixels wide, 300 pixels high and give
-it a title ‘Hello world’
-You probably noticed that window appears only for a split second on the screen.
-Because draw window is the last instruction in our program interpreter draws
-the window and exits immediately after. That can be easily fixed by making
-window close only after a mouse click.
-
-```python
-from graphics import *
-win = GraphWin("Hello world", 500, 300)
-win.getMouse()
-win.close()
+done = False
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
 ```
 
 ## Drawing in the Window
 
 So far we learned how to display an empty window and make it close after a
-mouse click but GraphWin is capable of much more and in this chapter we will
-learn how to display basic elements: `Point`, `Line`, `Circle` and `Rectangle`.
+mouse click but Pygame is capable of much more and in this chapter we will
+learn how to display basic elements: rectangle, line, circle and arc.
 
-```python    
-pt = Point(100, 50)
-```
-
-This creates a point at the location (100, 50), 100 pixels right from the left
-side edge of the window and 50 pixels down from the top. Unlike when GraphWin
-is created, nothing is immediately displayed. That is because a single Python
-program can create more than one window and we must explicitly say in which
-window we want to display the object. Most objects from graphics library have
-draw function that display them in the specified window. For the `Point` we
-just created it can be done by the following instruction:
+Colours
 
 ```python
-pt.draw(win)
+BLACK = (0, 0, 0)
+RED = (234, 67, 54)
+PURPLE = (219, 65, 244)
+BLUE = (65, 133, 244)
+GREEN = (52, 168, 82)
+YELLOW = (244, 233, 65)
+GREY = (205, 205, 205)
+WHITE = (255, 255, 255)
 ```
 
-> Display four points _A_, _B_, _C_ & _D_ on the screen so that
-> _AB = BC = CD = DA_. Can you make program that allows to enter distance when
-> ran?
-
-To draw a circle on the screen using Python we need to specify only two things:
-centre and radius of the circle. A `Point` can be given as the centre of the
-circle and any number larger or equal to zero as the radius.
+0. Update screen
 
 ```python
-circle1 = Circle(Point(10, 10), 5)
-circle1.draw(win)
-pt = Point(20, 10)
-circle2 = Circle(pt, 5)
-circle2.draw(win)
+pygame.display.flip()
 ```
 
-The following block draws a straight line between two points a & b:
+1. Square
 
 ```python
-a = Point(10, 10)
-b = Point(30, 10)
-line = Line(a, b)
-line.draw(win)
+pygame.draw.rect(screen, WHITE, (10, 10, 580, 580), 2)
 ```
 
-`Rectangle` will draw a rectangle _ABCD_ if it's two opposite opposite vertices
-_A_ & _B_ will be given:
+2. Circle
 
 ```python
-a = Point(10, 10)
-c = Point(20, 30)
-rectangle = Rectangle(a, c)
-rectangle.draw(win)
+pygame.draw.circle(screen, WHITE, (300, 300), 290, 1)
+```
+
+3. Line
+
+```python
+pygame.draw.line(screen, WHITE, (10, 300), (300, 10), 1)
+pygame.draw.line(screen, WHITE, (300, 10), (590, 300), 1)
+pygame.draw.line(screen, WHITE, (590, 300), (300, 590), 1)
+pygame.draw.line(screen, WHITE, (300, 590), (10, 300), 1)
+```
+
+4. Polygon
+
+```python
+pygame.draw.polygon(screen, GREEN, [(10, 300), (300, 10), (590, 300), (300, 590)], 0)
+```
+
+5. Arc
+
+```python
+from math import pi
+
+pygame.draw.arc(screen, RED,    (10, 10, 580, 580), 0         , pi / 2    , 2)
+pygame.draw.arc(screen, PURPLE, (10, 10, 580, 580), pi / 2    , pi        , 2)
+pygame.draw.arc(screen, BLUE,   (10, 10, 580, 580), pi        , 3 * pi / 2, 2)
+pygame.draw.arc(screen, YELLOW, (10, 10, 580, 580), 3 * pi / 2, 2 * pi    , 2)
+```
+
+6. Background colour
+
+```python
+screen.fill(GREY)
+```
+
+
+Example
+
+```python
+from math import pi
+import pygame
+
+# Colours
+BLACK = (0, 0, 0)
+RED = (234, 67, 54)
+PURPLE = (219, 65, 244)
+BLUE = (65, 133, 244)
+GREEN = (52, 168, 82)
+YELLOW = (244, 233, 65)
+GREY = (205, 205, 205)
+WHITE = (255, 255, 255)
+
+pygame.init()
+screen = pygame.display.set_mode([600, 600])
+
+n = 0
+done = False
+while not done:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            done = True
+
+    # Background colour
+    screen.fill(GREY)
+
+    # Outer circle
+    pygame.draw.rect(screen, WHITE, (10, 10, 580, 580), 2)
+
+    # Circle
+    pygame.draw.circle(screen, WHITE, (300, 300), 290, 1)
+
+    # Inner square
+    pygame.draw.line(screen, WHITE, (10, 300),  (300, 10),  1)
+    pygame.draw.line(screen, WHITE, (300, 10),  (590, 300), 1)
+    pygame.draw.line(screen, WHITE, (590, 300), (300, 590), 1)
+    pygame.draw.line(screen, WHITE, (300, 590), (10, 300),  1)
+
+    # Filled polygon
+    pygame.draw.polygon(screen, GREEN, [(10, 300), (300, 10), (590, 300), (300, 590)], 0)
+
+    # Draw arcs
+    pygame.draw.arc(screen, RED,    (10, 10, 580, 580), 0         , pi / 2    , 2)
+    pygame.draw.arc(screen, PURPLE, (10, 10, 580, 580), pi / 2    , pi        , 2)
+    pygame.draw.arc(screen, BLUE,   (10, 10, 580, 580), pi        , 3 * pi / 2, 2)
+    pygame.draw.arc(screen, YELLOW, (10, 10, 580, 580), 3 * pi / 2, 2 * pi    , 2)
+
+    # Update display
+    pygame.display.flip()
 ```
 
 ## Exercises
 
 1. Create a program that draws horizontal line segment
 2. Create a program that draws symmetrical plus sign
-3. Create a program that draws 5 squares using 2 `Rectangle` objects
+3. Create a program that draws 5 squares using 2 rectangles
 4. Create a program that draws right-angled triangle
 5. Create a program that draws a star
 6. Create a program that draws a face and colours it
-7. Create a program that draws a triangle _ABC_, it's height _BD_ and median
-_BE_
-8. Create a program that draws 3 triangles with random numbers as they center
-coordinates and radius
+7. Create a program that draws a triangle _ABC_, it's height _BD_ and median _BE_
+8. Create a program that draws 3 triangles with random numbers as they center coordinates and radius
 9. Create a program that draws 3 triangles so that they are touching each other
