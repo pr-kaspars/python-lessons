@@ -1,9 +1,12 @@
 ## Counting and Summing
 
-1. Count words in the text. Words are separated by a single space.
-2. Find all *th* in the text.
-3. Calculate mean of given numbers.
-4. Count how many numbers are positive and how many are negative.
-5. Calculate factorial of a number. _n! = 1 \* 2 \* 3 \* ... \* n_
-6. Calculate sum of a sequence _1<sup>2</sup> - 2<sup>2</sup> + 3<sup>2</sup> - 4<sup>2</sup> + ... + (-1)<sup>n+1</sup> \* n<sup>2</sup>_.
-7. Calculate _sin x_ using Taylor Series. _x - x<sup>3</sup>/3! + x<sup>5</sup>/5! + ... + (-1)<sup>n+1</sup>\*x<sup>2n+1</sup>/(2n+1)!_.
+1. Count words in the text. Words are separated by a single space. [Solution](solutions/count_sum/e_301.py)
+2. Find all *th* in the text. [Solution](solutions/count_sum/e_302.py)
+3. Calculate mean of given numbers. [Solution](solutions/count_sum/e_303.py)
+4. Count how many numbers are positive and how many are negative. [Solution](solutions/count_sum/e_304.py)
+5. Calculate factorial of a number. [Solution](solutions/count_sum/e_305.py)<br>
+_n! = 1 \* 2 \* 3 \* ... \* n_
+6. Calculate sum of the sequence. [Solution](solutions/count_sum/e_306.py)<br>
+_1<sup>2</sup> - 2<sup>2</sup> + 3<sup>2</sup> - 4<sup>2</sup> + ... + (-1)<sup>n+1</sup> \* n<sup>2</sup>_.
+7. Calculate _sin x_ using Taylor Series. [Solution](solutions/count_sum/e_307.py)<br>
+_x - x<sup>3</sup>/3! + x<sup>5</sup>/5! + ... + (-1)<sup>n+1</sup>\*x<sup>2n+1</sup>/(2n+1)!_.
