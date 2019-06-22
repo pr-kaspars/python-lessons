@@ -12,3 +12,4 @@
 1. [Numbers](exercises/numbers.md)
 2. [Loops - `for`](exercises/loops_for.md)
 3. [Counting and Summing](exercises/count_sum.md)
+3. [Loops - `while`](exercises/loops_while.md)
